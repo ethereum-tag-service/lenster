@@ -69,6 +69,15 @@ const Navbar: FC = () => {
     >
       {({ open }) => (
         <>
+          <div className="p-2 bg-pink-500 text-center text-white">
+            <span className="md:inline">This is an Ethereum Tag Service integration demo.</span>
+            {/* <span className="block sm:ml-2 sm:inline-block">
+              <a href="" className="font-bold text-white underline">
+                Learn more
+                <span aria-hidden="true"> &rarr;</span>
+              </a>
+            </span> */}
+          </div>
           {staffMode && <StaffBar />}
           <div className="container px-5 mx-auto max-w-screen-xl">
             <div className="flex relative justify-between items-center h-14 sm:h-16">

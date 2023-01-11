@@ -51,6 +51,7 @@ const ProfilePageShimmer: FC = () => {
             <div className="w-14 h-8 rounded-lg sm:w-28 shimmer" />
             <div className="w-14 h-8 rounded-lg sm:w-28 shimmer" />
             <div className="w-14 h-8 rounded-lg sm:w-28 shimmer" />
+            <div className="w-14 h-8 rounded-lg sm:w-28 shimmer" />
           </div>
           <PublicationsShimmer />
         </GridItemEight>

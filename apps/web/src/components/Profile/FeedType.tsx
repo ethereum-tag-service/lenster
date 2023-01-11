@@ -1,5 +1,11 @@
 import TabButton from '@components/UI/TabButton';
-import { ChatAlt2Icon, FilmIcon, PencilAltIcon, PhotographIcon } from '@heroicons/react/outline';
+import {
+  BookmarkIcon,
+  ChatAlt2Icon,
+  FilmIcon,
+  PencilAltIcon,
+  PhotographIcon
+} from '@heroicons/react/outline';
 import { Leafwatch } from '@lib/leafwatch';
 import type { ProfileStats } from 'lens';
 import type { Dispatch, FC } from 'react';
@@ -53,6 +59,15 @@ const FeedType: FC<Props> = ({ stats, setFeedType, feedType }) => {
           onClick={() => {
             setFeedType('NFT');
             Leafwatch.track(PROFILE.SWITCH_NFTS);
+          }}
+        />
+        <TabButton
+          name="Bookmarks"
+          icon={<BookmarkIcon className="w-4 h-4" />}
+          active={feedType === 'BOOKMARK'}
+          onClick={() => {
+            setFeedType('BOOKMARK');
+            Leafwatch.track(PROFILE.SWITCH_BOOKMARKS);
           }}
         />
       </div>
