@@ -12,7 +12,7 @@ import { cursorBasedPagination } from '@lib/cursorBasedPagination';
 import { publicationKeyFields } from '@lib/keyFields';
 import parseJwt from '@lib/parseJwt';
 import axios from 'axios';
-import { API_URL, LS_KEYS } from 'data/constants';
+import { API_URL, ETS_API_URL, LS_KEYS } from 'data/constants';
 import result from 'lens';
 
 const REFRESH_AUTHENTICATION_MUTATION = `
@@ -26,6 +26,12 @@ const REFRESH_AUTHENTICATION_MUTATION = `
 
 const httpLink = new HttpLink({
   uri: API_URL,
+  fetchOptions: 'no-cors',
+  fetch
+});
+
+const etsHttpLink = new HttpLink({
+  uri: ETS_API_URL,
   fetchOptions: 'no-cors',
   fetch
 });
@@ -138,12 +144,20 @@ const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-  link: from([retryLink, authLink, httpLink]),
+  link: ApolloLink.split(
+    (operation) => operation.getContext().clientName === 'ets',
+    etsHttpLink, // apollo will send to this if clientName is "ets"
+    from([retryLink, authLink, httpLink]) // otherwise will send to this
+  ),
   cache
 });
 
 export const serverlessClient = new ApolloClient({
-  link: from([httpLink]),
+  link: ApolloLink.split(
+    (operation) => operation.getContext().clientName === 'ets',
+    etsHttpLink, // apollo will send to this if clientName is "ets"
+    from([httpLink]) // otherwise will send to this
+  ),
   cache
 });
 

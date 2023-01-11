@@ -116,3 +116,13 @@ export const LS_KEYS = {
   TIMELINE_STORE: 'timeline.store',
   MESSAGE_STORE: 'message.store'
 };
+
+// ETS
+export const ETS_API_URL = IS_MAINNET
+  ? 'https://api.thegraph.com/subgraphs/name/ethereum-tag-service/ets-mumbai'
+  : 'https://api.thegraph.com/subgraphs/name/ethereum-tag-service/ets-mumbai';
+
+// TODO: update address when on mainnet
+export const ETS_PUBLISHER = IS_MAINNET
+  ? '0x672ff1988b4d69417b6d159c295899c3bee4438c'
+  : '0x672ff1988b4d69417b6d159c295899c3bee4438c';

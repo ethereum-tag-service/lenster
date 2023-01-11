@@ -19,6 +19,7 @@ export const PROFILE = {
   SWITCH_MEDIA: 'switch_to_media_tab_in_profile',
   SWITCH_NFTS: 'switch_to_nft_tab_in_profile',
   SWITCH_PROFILE: 'switch_profile',
+  SWITCH_BOOKMARKS: 'switch_to_bookmarks_tab_in_profile',
   LOGOUT: 'profile_logout'
 };
 
@@ -54,6 +55,11 @@ export const PUBLICATION = {
     OPEN_COLLECT: 'open_collect_modal',
     OPEN_COLLECTORS: 'open_collectors_list',
     OPEN_UNISWAP: 'open_uniswap'
+  },
+  BOOKMARKS: {
+    OPEN_BOOKMARKS: 'open_bookmarks_list',
+    ADD: 'add_bookmark',
+    REMOVE: 'remove_bookmark'
   },
   NEW: {
     MARKDOWN_PREVIEW: 'preview_markdown',

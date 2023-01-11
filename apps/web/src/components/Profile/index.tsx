@@ -9,6 +9,7 @@ import Custom404 from 'src/pages/404';
 import Custom500 from 'src/pages/500';
 import { useAppStore } from 'src/store/app';
 
+import BookmarkFeed from './BookmarkFeed';
 import Cover from './Cover';
 import Details from './Details';
 import Feed from './Feed';
@@ -22,7 +23,7 @@ const ViewProfile: NextPage = () => {
   } = useRouter();
   const currentProfile = useAppStore((state) => state.currentProfile);
   const [feedType, setFeedType] = useState(
-    type && ['feed', 'replies', 'media', 'nft'].includes(type as string)
+    type && ['feed', 'replies', 'media', 'nft', 'bookmark'].includes(type as string)
       ? type.toString().toUpperCase()
       : 'FEED'
   );
@@ -70,6 +71,7 @@ const ViewProfile: NextPage = () => {
             <Feed profile={profile as any} type={feedType} />
           )}
           {feedType === 'NFT' && <NFTFeed profile={profile as any} />}
+          {feedType === 'BOOKMARK' && <BookmarkFeed profile={profile as any} />}
         </GridItemEight>
       </GridLayout>
     </>
